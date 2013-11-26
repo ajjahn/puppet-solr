@@ -28,6 +28,14 @@ class solr::install inherits solr {
         preextract_command  => $solr::install_precommand,
         postextract_command => $solr::install_postcommand,
       }
+      
+      file { "/etc/init.d/solr":
+        source => 'puppet:///modules/solr/solr',
+        mode => '755',
+        owner => 'root',
+        group => 'root'
+      }
+      
     }
 
     puppi: {
